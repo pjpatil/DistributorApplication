@@ -44,7 +44,6 @@ public class ValidateServletController extends HttpServlet {
 		model = validService.isValidateUser(model);
 		out.println(model);
 		
-		
 	}
 
 
