@@ -27,7 +27,7 @@ public class DBConfig {
 			String password=p.getProperty("db.password");
 			String url=p.getProperty("db.url");
 			String driverClassName=p.getProperty("db.driverClassName");
-
+			
 			Class.forName(driverClassName);
 			conn=DriverManager.getConnection(url,username,password);
 			if(conn!=null) {

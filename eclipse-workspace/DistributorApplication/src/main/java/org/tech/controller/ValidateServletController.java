@@ -42,7 +42,18 @@ public class ValidateServletController extends HttpServlet {
 
 		ValidateUserService validService = new ValidateUserServiceImpl();
 		model = validService.isValidateUser(model);
-		out.println(model);
+//		out.println(model);
+		if(model.getLoginType().equals("super admin")) {
+			// call dashboard Super admin 
+			out.println("call Dashboard for Super admin ");
+		}
+		else if(model.getLoginType().equals("employee")) {
+			// call dashboard Employee
+			out.println("call Dashboard for Employee ");
+		}
+		else {
+			out.println("Invalid username !");
+		}
 		
 	}
 
