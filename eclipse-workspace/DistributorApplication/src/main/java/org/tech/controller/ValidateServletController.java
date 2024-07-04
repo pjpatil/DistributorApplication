@@ -3,6 +3,7 @@ package org.tech.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,8 @@ public class ValidateServletController extends HttpServlet {
 //		out.println(model);
 		if(model.getLoginType().equals("super admin")) {
 			// call dashboard Super admin 
-			out.println("call Dashboard for Super admin ");
+			RequestDispatcher r=request.getRequestDispatcher("superadmindashboard.jsp");
+			r.forward(request, response);
 		}
 		else if(model.getLoginType().equals("employee")) {
 			// call dashboard Employee
