@@ -23,8 +23,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
 	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 	crossorigin="anonymous"></script>
-	
-	<script type="text/javascript" src='JS/validate.js'></script>
+
+<script type="text/javascript" src='JS/validate.js'></script>
 
 </head>
 
@@ -32,7 +32,8 @@
 
 	<div class="d-flex align-items-start bg-light h-100 m-2">
 		<!-- Main Menu  -->
-		<div class="nav flex-column nav-pills me-3 w-25 m-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<div class="nav flex-column nav-pills me-3 w-25 m-2" id="v-pills-tab"
+			role="tablist" aria-orientation="vertical">
 			<button class="nav-link active" id="v-pills-home-tab"
 				data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
 				role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
@@ -57,7 +58,8 @@
 
 		<div class="tab-content w-50" id="v-pills-tabContent">
 			<!-- Home  -->
-			<div class="tab-pane fade show active bg-danger" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+			<div class="tab-pane fade show active bg-danger" id="v-pills-home"
+				role="tabpanel" aria-labelledby="v-pills-home-tab">
 				<div class="contener  w-50 ">
 					<h1>Distributor aaplication</h1>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -71,13 +73,15 @@
 			</div>
 
 			<!-- Company Master -->
-			<div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+			<div class="tab-pane fade " id="v-pills-profile" role="tabpanel"
+				aria-labelledby="v-pills-profile-tab">
 				<!----------------------------- Company Master Menu ---------------------------------->
 				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 					<li class="nav-item" role="presentation">
 						<button class="nav-link " id="pills-home-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
-							role="tab" aria-controls="pills-home" aria-selected="true">New Vendor</button>
+							role="tab" aria-controls="pills-home" aria-selected="true">New
+							Vendor</button>
 					</li>
 					<li class="nav-item" role="presentation">
 						<button class="nav-link" id="pills-profile-tab"
@@ -95,14 +99,18 @@
 
 				<div class="tab-content" id="pills-tabContent">
 					<!-- New Vendor -->
-					<div class="tab-pane fade show " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+					<div class="tab-pane fade show " id="pills-home" role="tabpanel"
+						aria-labelledby="pills-home-tab">
 
-						<form name="frm" id="frm" action="savevendor" method="POST" onsubmit="validateName()">
+						<form name="frm" id="frm" action="savevendor" method="POST"
+							onsubmit="validateName()">
 
 							<div class="form-group">
-								<input type="text" name="name" value="" id="txtVend" class="form-control" placeholder="Vendor name" onkeyup="validateVendor()"/>
-								<span id="msg"></span><br />
-								<input type="submit" name="s" id="btn" value="Add new Vendor" class="form-control" />
+								<input type="text" name="name" value="" id="txtVend"
+									class="form-control" placeholder="Vendor name"
+									onkeyup="validateVendor()" /> <span id="msg"></span><br /> <input
+									type="submit" name="s" id="btn" value="Add new Vendor"
+									class="form-control" />
 							</div>
 
 						</form>
@@ -110,20 +118,61 @@
 					</div>
 
 					<!-- View Vendor -->
-					<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+						aria-labelledby="pills-profile-tab">
 						<p>View Vendor</p>
+						<%@page import="org.tech.model.*,org.tech.service.*,java.util.*" %>
+						<%!VendorService vendService = new VendorServiceImpl();
+						%>
+
+						<% List<VendorModel> vendList = vendService.getvendorList();
+						%>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">NAME</th>
+									<th scope="col">DELETE</th>
+									<th scope="col">UPDATE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									for (VendorModel vmodel : vendList) {
+								%>
+								<tr>
+									<th scope="row"><%=vmodel.getId()%></th>
+									<td><%=vmodel.getName()%></td>
+									<td><a href='delvendor?vid=<%=vmodel.getId()%>'>Delete</a></td>
+									<td><a href='updatevendor?vid=<%=vmodel.getId()%>&vname=<%=vmodel.getName()%>'>Update</a></td>
+								</tr>
+								<%
+								}
+								%>
+							</tbody>
+						</table>
 					</div>
 
 					<!-- Search Vendor -->
-					<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+					<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+						aria-labelledby="pills-contact-tab">
 						<p>Search Vendor</p>
+						<form name="frm" id="frm" action="savevendor" method="POST" onsubmit="validateName()">
+
+							<div class="form-group">
+								<input type="text" name="name" value="" id="txtVend" class="form-control" placeholder="Vendor name" onkeyup="validateVendor()" />
+								<br /> 
+							</div>
+
+						</form>
 					</div>
 
 				</div>
 			</div>
 
 			<!-- Messages  -->
-			<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+			<div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+				aria-labelledby="v-pills-messages-tab">
 				<p>This is some placeholder content the Profile tab's associated
 					content. Clicking another tab will toggle the visibility of this
 					one for the next. The tab JavaScript swaps classes to control the
@@ -133,7 +182,8 @@
 
 
 			<!-- Settings -->
-			<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+			<div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+				aria-labelledby="v-pills-settings-tab">
 				<p>This is some placeholder content the Messages tab's
 					associated content. Clicking another tab will toggle the visibility
 					of this one for the next. The tab JavaScript swaps classes to
