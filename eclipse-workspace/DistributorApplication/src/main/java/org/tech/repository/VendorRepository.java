@@ -8,5 +8,5 @@ public interface VendorRepository {
 	public boolean isAddNewVendor(VendorModel model);
 	public List<VendorModel> getvendorList();
 	public boolean isDeleteVendorById(int vendorid);
-	
+	public List<VendorModel> getvendorListByName(String name);
 }

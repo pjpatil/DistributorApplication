@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+.divContent ul{
+	list-style: none;
+	padding: 10px;
+}
+.divContent ul li{
+	display: inline;
+	padding: 10px;
+	border: 2px solid black;
+
+}
+.divContent ul li a{
+	text-decoration:none;
+
+}

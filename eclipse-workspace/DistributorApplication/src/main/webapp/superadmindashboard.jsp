@@ -43,6 +43,11 @@
 				type="button" role="tab" aria-controls="v-pills-profile"
 				aria-selected="false">Company Master</button>
 
+			<button class="nav-link" id="v-pills-products-tab"
+				data-bs-toggle="pill" data-bs-target="#v-pills-products"
+				type="button" role="tab" aria-controls="v-pills-products"
+				aria-selected="false">Product Master</button>
+
 			<button class="nav-link" id="v-pills-messages-tab"
 				data-bs-toggle="pill" data-bs-target="#v-pills-messages"
 				type="button" role="tab" aria-controls="v-pills-messages"
@@ -58,7 +63,7 @@
 
 		<div class="tab-content w-50" id="v-pills-tabContent">
 			<!-- Home  -->
-			<div class="tab-pane fade show active bg-danger" id="v-pills-home"
+			<div class="tab-pane fade show active " id="v-pills-home"
 				role="tabpanel" aria-labelledby="v-pills-home-tab">
 				<div class="contener  w-50 ">
 					<h1>Distributor aaplication</h1>
@@ -111,6 +116,7 @@
 									onkeyup="validateVendor()" /> <span id="msg"></span><br /> <input
 									type="submit" name="s" id="btn" value="Add new Vendor"
 									class="form-control" />
+
 							</div>
 
 						</form>
@@ -121,54 +127,64 @@
 					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
 						aria-labelledby="pills-profile-tab">
 						<p>View Vendor</p>
-						<%@page import="org.tech.model.*,org.tech.service.*,java.util.*" %>
-						<%!VendorService vendService = new VendorServiceImpl();
+						<%@page import="org.tech.model.*,org.tech.service.*,java.util.*"%>
+						<%!VendorService vendService = new VendorServiceImpl();%>
+
+						<%
+						List<VendorModel> vendList = vendService.getvendorList();
 						%>
 
-						<% List<VendorModel> vendList = vendService.getvendorList();
-						%>
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th scope="col">ID</th>
-									<th scope="col">NAME</th>
-									<th scope="col">DELETE</th>
-									<th scope="col">UPDATE</th>
-								</tr>
-							</thead>
-							<tbody>
-								<%
+						<div class="form-group">
+							<input type="text" name="name" value="" id="txtVend"
+								class="form-control" placeholder="Search Data using vendor name"
+								onkeyup="searchUsingAjax(this.value)" /> <br />
+						</div>
+
+						<div id="showGrid">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">NAME</th>
+										<th scope="col">DELETE</th>
+										<th scope="col">UPDATE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
 									for (VendorModel vmodel : vendList) {
-								%>
-								<tr>
-									<th scope="row"><%=vmodel.getId()%></th>
-									<td><%=vmodel.getName()%></td>
-									<td><a href='delvendor?vid=<%=vmodel.getId()%>'>Delete</a></td>
-									<td><a href='updatevendor?vid=<%=vmodel.getId()%>&vname=<%=vmodel.getName()%>'>Update</a></td>
-								</tr>
-								<%
-								}
-								%>
-							</tbody>
-						</table>
+									%>
+									<tr>
+										<th scope="row"><%=vmodel.getId()%></th>
+										<td><%=vmodel.getName()%></td>
+										<td><a href='delvendor?vid=<%=vmodel.getId()%>'>Delete</a></td>
+										<td><a
+											href='updatevendor?vid=<%=vmodel.getId()%>&vname=<%=vmodel.getName()%>'>Update</a></td>
+									</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+						</div>
 					</div>
 
 					<!-- Search Vendor -->
 					<div class="tab-pane fade" id="pills-contact" role="tabpanel"
 						aria-labelledby="pills-contact-tab">
 						<p>Search Vendor</p>
-						<form name="frm" id="frm" action="savevendor" method="POST" onsubmit="validateName()">
 
-							<div class="form-group">
-								<input type="text" name="name" value="" id="txtVend" class="form-control" placeholder="Vendor name" onkeyup="validateVendor()" />
-								<br /> 
-							</div>
-
-						</form>
 					</div>
 
 				</div>
 			</div>
+
+			<!-- Product   -->
+			<div class="tab-pane fade" id="v-pills-products" role="tabpanel"
+				aria-labelledby="v-pills-products-tab">
+				<p>Product page</p>
+			</div>
+
 
 			<!-- Messages  -->
 			<div class="tab-pane fade" id="v-pills-messages" role="tabpanel"

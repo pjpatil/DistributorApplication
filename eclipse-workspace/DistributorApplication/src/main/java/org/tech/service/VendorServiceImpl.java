@@ -27,4 +27,10 @@ public class VendorServiceImpl implements VendorService {
 		return vendRepo.isDeleteVendorById(vendorid);
 	}
 
+	@Override
+	public List<VendorModel> getvendorListByName(String name) {
+		
+		return vendRepo.getvendorListByName(name);
+	}
+
 }
