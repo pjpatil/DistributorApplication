@@ -44,10 +44,11 @@
 				aria-selected="false">Company Master</button>
 
 			<button class="nav-link" id="v-pills-products-tab"
-				data-bs-toggle="pill" data-bs-target="#v-pills-products"
+				data-bs-toggle="pill" data-bs-target="newMaster.jsp"
 				type="button" role="tab" aria-controls="v-pills-products"
-				aria-selected="false">Product Master</button>
-
+				aria-selected="false"><a href="newMaster.jsp">Product Master</a></button>
+			
+			
 			<button class="nav-link" id="v-pills-messages-tab"
 				data-bs-toggle="pill" data-bs-target="#v-pills-messages"
 				type="button" role="tab" aria-controls="v-pills-messages"
@@ -182,7 +183,7 @@
 			<!-- Product   -->
 			<div class="tab-pane fade" id="v-pills-products" role="tabpanel"
 				aria-labelledby="v-pills-products-tab">
-				<p>Product page</p>
+				<!-- <p>Product page</p> -->
 			</div>
 
 

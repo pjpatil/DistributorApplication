@@ -59,8 +59,8 @@
 
 		</div>
 
-		<div class="divContent mt-5">
-			<ul>
+		<div class="divContent mt-5 ">
+			<ul class="bg-primary">
 				<li><a href=''>Add New Product</a></li>
 				<li><a href=''>View Product</a></li>
 				<li><a href=''>View Vendor wise Products</a></li>
