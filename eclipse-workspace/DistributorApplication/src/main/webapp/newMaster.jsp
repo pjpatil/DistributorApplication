@@ -59,15 +59,13 @@
 
 		</div>
 
-		<div class="divContent mt-5 ">
+		<div class="divContent mt-5 w-50">
 			<ul class="bg-primary">
-				<li><a href=''>Add New Product</a></li>
+				<li><a href='AddNewProduct.jsp'>Add New Product</a></li>
 				<li><a href=''>View Product</a></li>
 				<li><a href=''>View Vendor wise Products</a></li>
 			</ul>
-		</div>
-
-	</div>
+		
 
 </body>
 </html>
